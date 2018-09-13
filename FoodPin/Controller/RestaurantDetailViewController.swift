@@ -14,6 +14,7 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerView: RestaruantDetailHeaderView!
     
+    
     var restaurant: Restaurant = Restaurant()
     
     // MARK: - View controller life style
@@ -101,6 +102,20 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
         if segue.identifier == "showMap" {
             let destinationController = segue.destination as! MapViewController
             destinationController.restaurant = restaurant
+        } else if segue.identifier == "showReview" {
+            let destinationController = segue.destination as! ReviewViewController
+            destinationController.restaurant = restaurant
+        }
+    }
+    
+    @IBAction func close(segue: UIStoryboardSegue) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func rateRestaurant(segue: UIStoryboardSegue) {
+        if let rating = segue.identifier {
+            self.restaurant.rating = rating
+            self.headerView.ratingImageView.image = UIImage(named: rating)
         }
     }
 }

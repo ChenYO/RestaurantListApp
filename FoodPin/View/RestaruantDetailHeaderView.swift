@@ -10,6 +10,7 @@ import UIKit
 
 class RestaruantDetailHeaderView: UIView {
 
+    @IBOutlet weak var ratingImageView: UIImageView!
     @IBOutlet weak var headerImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel! {
         didSet {
